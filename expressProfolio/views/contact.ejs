@@ -7,5 +7,35 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+
+    <h1>Contact Form</h1>
+    <form action="mailto:kma52@my.centennialcollege.ca" method="post">
+        <fieldset>
+            <legend>Your Information</legend>
+            <p>
+                <label for="fName">First Name: </label>
+                <input id="fName" name="fName" size="25" type="text" required="required" tabindex="1">
+            </p>
+            <p>
+                <label for="lName">Last name: </label>
+                <input id="lName" name="lName" size="25" type="text" required="required" tabindex="3">
+            </p>
+            <p>
+                <label for="phone">Phone number: </label>
+                <input id="phone" name="phone" size="25" type="tel" required="required" tabindex="5">
+            </p>
+            <p>
+                <label for="email">Email: </label>
+                <input id="email" name="email" size="25" type="email" required="required" tabindex="7">
+            </p>
+
+            <label for="comments">Your messgae: </label>
+            <textarea id="comments" name="comments" cols="50" rows="8" tabindex="19"></textarea>
+        </fieldset>
+        <p class="flex-parent">
+            <input class="button" name="btmSend" type="submit" value="Send" tabindex="21">
+            <input class="button" name="btnReset" type="reset" value="Clear Form" tabindex="23">
+        </p>
+    </form>
   </body>
 </html>
