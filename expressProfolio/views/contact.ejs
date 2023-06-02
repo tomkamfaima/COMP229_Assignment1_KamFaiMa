@@ -5,10 +5,13 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+    <div id="allPage">
+    <%- include('partials/banner') %>
+    <%- include('partials/navbar') %>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
-
     <h1>Contact Form</h1>
+    <main>
     <form action="mailto:kma52@my.centennialcollege.ca" method="post">
         <fieldset>
             <legend>Your Information</legend>
@@ -37,5 +40,7 @@
             <input class="button" name="btnReset" type="reset" value="Clear Form" tabindex="23">
         </p>
     </form>
+</main>
+</div>
   </body>
 </html>

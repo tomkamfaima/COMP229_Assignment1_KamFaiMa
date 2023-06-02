@@ -5,16 +5,18 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <nav>
-      <ul>
-        <li>Home</li>
-        <li>About Me</li>
-        <li>Project</li>
-        <li>Service</li>
-        <li>Contact Me</li>
-      </ul>
-    </nav>
+    <div id="allPage">
+    <%- include('partials/banner') %>
+    <%- include('partials/navbar') %>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <main>
+    <p>Welcome to Kam Fai Ma, Front-end Developer</p>
+    <figure>
+      <a href="/"><img id ="myphoto" src="images/me.jpg" alt="Kam Fai, Ma"></a>
+      <figcaption>Kam Fai, Ma</figcaption>
+      <h3>Mission Statement</h3>
+      <p>I design and code! Delicated to front-end design! </p>
+    </main>
+  </div>
   </body>
 </html>

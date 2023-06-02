@@ -1,13 +1,98 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #848282;
 }
 
-a {
-  color: #00B7FF;
+#allPage {
+  background-color: #fff;
+  width: 980px;
+  margin-left: auto;
+  margin-right:auto;
+  display: grid;
+  grid-template-areas:
+  'header header'
+  'nav name'
+  'nav main';
+  grid-template-columns: 1fr 6fr;
+  grid-template-rows: 0.5fr 0.5fr 6fr;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-li {
+header {
+  grid-area: header;
+  background-color: #fff;
+}
+#banner {
+  float: left;
+  width: 25%;
+  display: block;
+  padding:20px;
+}
+
+h1 {
+  grid-area: name;
+  text-align: center;
+  padding: 20px;
+  background-color: #699ABD;
+  color: white;
+  display: block;
+  margin: 0;
+  height: 40px;
+} 
+
+nav {
+  grid-area: nav;
+  width: 150px;
+  padding:60px 0px 0px;
+  background-color: #699ABD;
+}
+
+nav ul li {
   color:white;
+  padding: 10px;
   display: inline-block;
+}
+
+nav a:link, a:visited  {
+  text-decoration: none;
+  color: white;
+}
+
+fieldset {
+  margin: 10px 5px 15px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #666666;
+  padding:6px;
+}
+legend {
+  font-weight: bold;
+  font-variant: small-caps;
+  text-transform: capitalize;
+  font-size: large;
+}
+label {
+  width:250px;
+  float: left;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+figure {
+  border:1px #cccccc;
+  padding: 4px;
+  margin-left: auto;
+  margin-right: auto;
+  width:220px;
+  background-color: white;
+}
+#myphoto {
+  width: 200px;
+}
+figcaption {
+  background-color: black;
+  color: white;
+  font-style:italic;
+  padding: 2px;
+  text-align: center;
 }
