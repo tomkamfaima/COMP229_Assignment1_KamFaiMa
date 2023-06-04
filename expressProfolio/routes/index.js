@@ -11,16 +11,16 @@ router.get('/about', function(req, res, next) {
   res.render('about', { title: 'About Me' });
 });
 /* GET Project page. */
-router.get('/project', function(req, res, next) {
-  res.render('project', { title: 'Project' });
+router.get('/projects', function(req, res, next) {
+  res.render('projects', { title: 'Projects' });
 });
 /* GET Service page. */
-router.get('/service', function(req, res, next) {
-  res.render('service', { title: 'Service' });
+router.get('/services', function(req, res, next) {
+  res.render('services', { title: 'Services' });
 });
 /* GET Contact page. */
 router.get('/contact', function(req, res, next) {
-  res.render('contact', { title: 'Contact' });
+  res.render('contact', { title: 'Contact Me' });
 
 });
 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div id="allPage">
+    <%- include('partials/banner') %>
+    <%- include('partials/navbar') %>
+    <h1><%= title %></h1>
+    <main>
+      <table>
+        <thead>
+          <th class="projectHeader">Project</th>
+          <th>Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td><img class="projectImage" src="images/Project1.jpg" width ="250"></td>
+            <td><span class="projectTitle">Interactive slide shows</span><br><br>
+            A dyanmic presentation tool using JavaScript. The automatic loop and smoothly transition between slides display the slides in a smooth manner. Users can control the direction of the slideshow by click on the arrows. Additionally, they can reset the slideshow. With its interactive features, this slideshow offers an immersive and customizable experience for displaying content.</td>
+          </tr>
+          <tr>
+            <td><img class="projectImage" src="images/Project2.jpg" width ="250"></td>
+            <td><span class="projectTitle">Centennial College <br> Continuing Education Course/ Instructor Evaluation Survey</span><br><br>
+            An online tool designed to gather valuable feedback from students regarding their learning experience. This user-friendly form allows students to provide ratings for both the course and the instructor, along with leaving comments or suggestions. By capturing essential information and insightful feedback, this survey aims to improve the quality of education. </td>
+          </tr>
+          <tr>
+            <td><img class="projectImage" src="images/Project3.jpg" width ="250"></td>
+            <td><span class="projectTitle">Bug Smasher</span><br><br>
+            A HTML game where players must catch a hopping ladybug on a leaf. By clicking on the ladybug, players earn points. The challenge intensifies as the ladybug's hopping speed increases with each successful click. With simple gameplay, players aim to beat their high scores. Bug Smasher offers a quick and addictive experience. It's the perfect choice for those seeking a fun HTML game that challenges their hand-eye coordination.</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </div>
+  </body>
+</html>

@@ -96,3 +96,42 @@ figcaption {
   padding: 2px;
   text-align: center;
 }
+
+table {
+padding:0px 5px 0px;
+width: 100%;
+}
+
+table th {
+  background-color:#546e79 ;
+  color:white;
+  vertical-align:middle;
+  height: 30px;
+}
+
+.projectHeader{
+  width: 60%;
+}
+
+.projectTitle{
+  font-weight: bold;
+}
+
+table td{
+  padding:5px;
+  vertical-align: top;
+  border-bottom:1px solid;
+  text-align:center;
+}
+
+.projectImage{
+  padding: 20px;
+  transition: 0.5s;
+  margin-left: 25%;
+  margin-right: 25%;
+  width: 50%;
+}
+
+.projectImage:hover{
+  transform: scale(1.8);
+}
