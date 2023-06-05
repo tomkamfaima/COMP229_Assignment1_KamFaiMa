@@ -1,3 +1,9 @@
+   <!--
+      Author: Kam Fai, Ma
+      Student ID: 301276248
+      Date:   06/04/2023
+      Filename: contact.ejs
+   -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -9,10 +15,11 @@
     <%- include('partials/banner') %>
     <%- include('partials/navbar') %>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <h1>Contact Form</h1>
+    <h1>Contact Me</h1>
     <main>
-    <form action="mailto:kma52@my.centennialcollege.ca" method="post">
+    <p><img src="images/phone.png" alt="phone" width="5%"> 647-897-1011</p>
+    <p><img src="images/email.png" alt="email" width="5%"> kma52@my.centennialcollege.ca</p>
+    <form action="/" method="get">
         <fieldset>
             <legend>Your Information</legend>
             <p>
@@ -33,14 +40,15 @@
             </p>
 
             <label for="comments">Your messgae: </label>
-            <textarea id="comments" name="comments" cols="50" rows="8" tabindex="19"></textarea>
+            <textarea id="comments" name="comments" cols="50" rows="8" tabindex="9"></textarea>
         </fieldset>
         <p class="flex-parent">
-            <input class="button" name="btmSend" type="submit" value="Send" tabindex="21">
-            <input class="button" name="btnReset" type="reset" value="Clear Form" tabindex="23">
+            <input class="button" name="btmSend" type="submit" value="Send" tabindex="11">
+            <input class="button" name="btnReset" type="reset" value="Clear Form" tabindex="13">
         </p>
     </form>
 </main>
 </div>
+<%- include('partials/footer') %>
   </body>
 </html>

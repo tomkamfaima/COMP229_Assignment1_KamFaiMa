@@ -1,3 +1,9 @@
+   <!--
+      Author: Kam Fai, Ma
+      Student ID: 301276248
+      Date:   06/04/2023
+      Filename: index.ejs
+   -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,13 +16,15 @@
     <%- include('partials/navbar') %>
     <h1><%= title %></h1>
     <main>
-    <p>Welcome to Kam Fai Ma, Front-end Developer</p>
-    <figure>
-      <a href="/"><img id ="myphoto" src="images/me.jpg" alt="Kam Fai, Ma"></a>
-      <figcaption>Kam Fai, Ma</figcaption>
-      <h3>Mission Statement</h3>
-      <p>I design and code! Delicated to front-end design! </p>
+    <div class="cen">
+    <p class="sub">Welcome to Kam Fai, Ma's portfolio webpage!  </p>
+    <p>Explore my portfolio to see how my diverse background and software engineering expertise come together to create innovative solutions for healthcare. </p>
+    <div class="buttonContainer"><button id="buttonAbout"><a href="about">About Me</a></button></div>
+    <p class="sub">Mission Statement</p>
+    <p>Witnessing the potential of technology in revolutionizing healthcare during my pharmacy career, I'm passionate about bridging the gap between these two domains.</p>
+  </div>
     </main>
   </div>
+  <%- include('partials/footer') %>
   </body>
 </html>

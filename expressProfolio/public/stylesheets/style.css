@@ -1,3 +1,8 @@
+/*Author: Kam Fai, Ma
+Student ID: 301276248
+Date:   06/04/2023
+Filename: style.css */
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -41,6 +46,39 @@ h1 {
   height: 40px;
 } 
 
+.sub {
+  font-size: larger;
+}
+figure {
+  border:1px #cccccc solid;
+  padding: 4px;
+  margin: auto;
+  background-color: white;
+}
+figcaption {
+  background-color: black;
+  color: white;
+  font-style:italic;
+  padding: 2px;
+  text-align: center;
+  font-size: larger;
+}
+.cen{
+  text-align: center;
+  font-size: large;
+}
+.buttonContainer{
+  margin: 50px;
+  display: block;
+  text-align: center;
+}
+#buttonAbout, #buttonResume{
+  background-color: #699ABD;
+  color: white;
+  font-size: larger;
+  border-radius: 10px;
+
+}
 nav {
   grid-area: nav;
   width: 150px;
@@ -134,4 +172,8 @@ table td{
 
 .projectImage:hover{
   transform: scale(1.8);
+}
+
+.footer{
+  color: white;
 }
