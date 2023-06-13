@@ -4,6 +4,8 @@ Date:   06/04/2023
 Filename: index.js */
 var express = require('express');
 var router = express.Router();
+const business_contact = require('../models/business_contact')
+const account_info = require('../models/account_info')
 
 /* GET Home page. */
 router.get('/', function(req, res, next) {
@@ -29,3 +31,16 @@ router.get('/contact', function(req, res, next) {
 });
 
 module.exports = router;
+
+//dotenv, express, bcrypt,passport,express-flash,express-session,method-override, passport-local
+//const bcrpyt = require('bcrpyt');
+//const initializePassport
+//passport config at root 
+// npm install bcrpty passport...
+//view-engine ejs
+//extract data from form: app.use(express.urlencoded({extended:false}))
+//flash
+// get (visti the url)request and post (entering id and pw and click login)request for loging
+//repeat password
+//hashed password
+//app.post for logout instead of app.delete 
