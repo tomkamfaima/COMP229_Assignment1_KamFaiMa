@@ -10,7 +10,6 @@ const db = mongoose.connection
 db.on('error', (error) => console.error(error))
 db.once('open', () => console.log('Connected to Database'))
 
-app.use(express.json());
 
 var createError = require('http-errors');
 var express = require('express');
@@ -22,7 +21,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
-
+app.use(express.json());
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
