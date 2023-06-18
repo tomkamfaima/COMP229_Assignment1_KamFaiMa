@@ -4,7 +4,7 @@ Date:   06/04/2023
 Filename: index.js */
 var express = require('express');
 var router = express.Router();
-const bcrpyt = require('bcrpyt');
+const bcrypt= require('bcrypt');
 //extract data from form
 app.use(express.urlencoded({extended:false}))
 
