@@ -41,7 +41,7 @@ router.get('/business_contact', function(req, res, next) {
 
 router.post('/register', (req,res) =>{
   const newUser = new account_info({
-    nae: req.body.name,
+    name: req.body.name,
     email: req.body.email,
     password: req.body.password
   });
