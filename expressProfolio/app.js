@@ -46,6 +46,7 @@ app.use('/contact-list', contactlistRouter);
 require('dotenv').config();
 const mongoose = require('mongoose'); 
 const business_contact = require('./models/business_contact');
+const account_info = require('./models/account_info');
 
 mongoose.connect("mongodb+srv://new_user:comp229@cluster93385.si1n2vb.mongodb.net/?retryWrites=true&w=majority",{
         useUnifiedTopology:true,
@@ -70,5 +71,12 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.serializeUser(account_info.serializeUser());
+passport.deserializeUser(account_info.deserializeUser());
+const LocalStrategy =require('passport-local').Strategy;
+passport.use(new LocalStrategy(account_info.authenticate()));
 
 module.exports = app;

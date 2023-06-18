@@ -29,12 +29,6 @@ router.get('/services', function(req, res, next) {
 router.get('/contact', function(req, res, next) {
   res.render('contact', { title: 'Contact Me' });
 });
-router.get('/login', function(req, res, next) {
-  res.render('login', { title: 'Login' });
-});
-router.get('/register', function(req, res, next) {
-  res.render('register', { title: 'Register' });
-});
 
 /*
 
@@ -52,18 +46,26 @@ router.get('/business_contact', (req,res,next)=> {
   });
 });*/
 
-router.get('/business_contact', (req,res,next) => {
-  business_contact.find((err, list) =>{
-      if(err){
-          return console.error(err);
-      }else{
-          res.render('business_contact', {title: 'Business Contact', list: list})     
-      }
-  });
-});
-
 router.get('/update', function(req, res, next) {
   res.render('update', { title: 'Update' });
+});
+
+
+/* GET Login page. */
+router.get('/login', function(req, res, next) {
+  res.render('login', { title: 'Login' });
+});
+/* GET Register page. */
+router.get('/register', function(req, res, next) {
+  res.render('register', { title: 'Register' });
+});
+
+router.post('/login', (req, res) => {
+  if(!req.body.name){
+    res.json({success:false, message:"Username was not given"})
+  }else if(!req.body.password){
+    res.json({success:false, message:"Password was not given"})
+  }
 });
 
 router.post('/register', (req,res) =>{
