@@ -20,6 +20,7 @@ const methodOverride = require('method-override')
 //routes
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var business_contactRouter = require('./routes/list');
 
 var app = express();
 
@@ -38,6 +39,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/contact-list', business_contactRouter);
+
 //setup db
 require('dotenv').config();
 const mongoose = require('mongoose'); 
