@@ -38,6 +38,9 @@ router.get('/register', function(req, res, next) {
 router.get('/business_contact', function(req, res, next) {
   res.render('business_contact', { title: 'Business Contact' });
 });
+router.get('/update', function(req, res, next) {
+  res.render('update', { title: 'Update' });
+});
 
 router.post('/register', (req,res) =>{
   const newUser = new account_info({
