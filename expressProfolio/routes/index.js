@@ -6,7 +6,7 @@ var express = require('express');
 var router = express.Router();
 const bcrypt= require('bcrypt');
 const business_contact = require('../models/business_contact')
-const user = require('../models/user');
+const User = require('../models/user');
 
 /* GET Home page. */
 router.get('/', function(req, res, next) {
@@ -69,14 +69,19 @@ router.post('/login', (req, res) => {
   }
 });
 */
-router.post('/register', (req,res) =>{
-  const newUser = new user({
+router.post('/register', async(req,res) =>{
+  try{
+    const hasedPassword = await bcrypt.hash(req.body.password,10);
+    const newUser = new User({
     name: req.body.name,
     email: req.body.email,
-    password: req.body.password
-  });
-  newUser.save()
-  return res.status(200).json({msg:newUser})
+    password: hasedPassword
+    });
+    newUser.save()
+    res.redirect('/login')}catch{
+      res.redirect('/register')
+    }
+    console.log(newUser);
 });
 
 router.post('/update', (req,res) =>{
