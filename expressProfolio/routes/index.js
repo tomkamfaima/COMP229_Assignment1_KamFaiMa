@@ -69,8 +69,13 @@ const getAllContact = async (req,res)=> {
   res.json(contacts);
 }
 
-router.get('/business_contact', function(req, res, next) {
-  res.render('business_contact', { title: 'Business Contact' });
+router.get('/business_contact', async (req,res, next)=>{
+  try{
+      const contacts = await Business_contact.find();
+      res.render('business_contact', { title: 'Business Contact', contacts:contacts });
+  }catch (err){
+      res.status(500).json({message:err.message})
+  }
 });
 
 module.exports = router;
