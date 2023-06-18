@@ -60,6 +60,7 @@ router.get('/register', function(req, res, next) {
   res.render('register', { title: 'Register' });
 });
 
+/*
 router.post('/login', (req, res) => {
   if(!req.body.name){
     res.json({success:false, message:"Username was not given"})
@@ -67,7 +68,7 @@ router.post('/login', (req, res) => {
     res.json({success:false, message:"Password was not given"})
   }
 });
-/*
+
 router.post('/register', (req,res) =>{
   const newUser = new account_info({
     name: req.body.name,
