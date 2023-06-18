@@ -11,13 +11,11 @@ const db = async () => {
       useUnifiedTopology:true,
       useNewUrlParser:true
     })
-    console.log('Connected to Database');
   }catch (err){
     console.log(err);
   }
 }
-db.on('error', (error) => console.error(error))
-db.once('open', () => console.log('Connected to Database'))
+db();
 
 var createError = require('http-errors');
 var express = require('express');
@@ -58,5 +56,9 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+mongoose.connection.once('open', ()=>{
+  console.log('Connected to MongoDB');
+})
 
 module.exports = app;
