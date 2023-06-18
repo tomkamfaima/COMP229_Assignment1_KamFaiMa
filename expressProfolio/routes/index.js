@@ -27,7 +27,9 @@ router.get('/services', function(req, res, next) {
 /* GET Contact page. */
 router.get('/contact', function(req, res, next) {
   res.render('contact', { title: 'Contact Me' });
-
+});
+router.get('/login', function(req, res, next) {
+  res.render('login', { title: 'Login' });
 });
 
 module.exports = router;
