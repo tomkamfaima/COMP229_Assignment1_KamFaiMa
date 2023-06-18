@@ -40,6 +40,16 @@ router.get('/business_contact', function(req, res, next) {
   res.render("business_contact", { title: 'Business Contact' });
 });
 
+router.get('/business_contact', (req,res,next)=> {
+  business_contact.find((err, list) =>{
+    if(err){
+      return console.error(err);
+    }else{
+      res.render('business_contact', {title: 'Business Contact', list:list})
+    }
+  });
+});
+
 router.get('/update', function(req, res, next) {
   res.render('update', { title: 'Update' });
 });

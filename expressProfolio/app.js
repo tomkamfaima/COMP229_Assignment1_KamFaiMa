@@ -43,6 +43,7 @@ app.use('/users', usersRouter);
 //setup db
 require('dotenv').config();
 const mongoose = require('mongoose'); 
+const business_contact = require('./models/business_contact');
 
 mongoose.connect("mongodb+srv://new_user:comp229@cluster93385.si1n2vb.mongodb.net/?retryWrites=true&w=majority",{
         useUnifiedTopology:true,
