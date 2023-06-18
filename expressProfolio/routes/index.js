@@ -37,15 +37,7 @@ router.get('/register', function(req, res, next) {
 });
 
 router.get('/business_contact', function(req, res, next) {
-  business_contact.find({},function (err, docs) {
-      if (!err) {
-          res.render("business_contact", { title: 'Business Contact' }, {
-              data: docs
-          });
-      } else {
-          console.log('Failed to retrieve the business contact list: ' + err);
-      }
-  });
+  res.render("business_contact", { title: 'Business Contact' });
 });
 
 router.get('/update', function(req, res, next) {
