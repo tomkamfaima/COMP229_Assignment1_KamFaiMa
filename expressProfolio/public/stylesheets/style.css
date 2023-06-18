@@ -177,3 +177,7 @@ table td{
 .footer{
   color: white;
 }
+
+#edit #delete{
+  width: 50px;
+}
