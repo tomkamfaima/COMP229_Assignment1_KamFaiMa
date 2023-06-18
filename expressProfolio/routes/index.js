@@ -4,6 +4,10 @@ Date:   06/04/2023
 Filename: index.js */
 var express = require('express');
 var router = express.Router();
+const bcrpyt = require('bcrpyt');
+//extract data from form
+app.use(express.urlencoded({extended:false}))
+
 const business_contact = require('../models/business_contact')
 const account_info = require('../models/account_info')
 
@@ -30,6 +34,9 @@ router.get('/contact', function(req, res, next) {
 });
 router.get('/login', function(req, res, next) {
   res.render('login', { title: 'Login' });
+});
+router.get('/register', function(req, res, next) {
+  res.render('register', { title: 'Register' });
 });
 router.get('/business_contact', function(req, res, next) {
   res.render('business_contact', { title: 'Business Contact' });

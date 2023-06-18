@@ -1,0 +1,35 @@
+   <!--
+      Author: Kam Fai, Ma
+      Student ID: 301276248
+      Date:   06/17/2023
+      Filename: login.ejs
+   -->
+   <!DOCTYPE html>
+   <html>
+     <head>
+       <title><%= title %></title>
+       <link rel='stylesheet' href='/stylesheets/style.css' />
+     </head>
+     <body>
+       <div id="allPage">
+       <%- include('partials/banner') %>
+       <%- include('partials/navbar') %>
+       <h1><%= title %></h1>
+       <main>
+        <form action="/register" method="POST">
+          <div>
+            <label for="name">Password</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+            <div>
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+          </form>
+          <a href="/login">Login</a>
+       </main>
+     </div>
+     <%- include('partials/footer') %>
+     </body>
+   </html>
