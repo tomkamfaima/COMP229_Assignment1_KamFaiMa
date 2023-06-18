@@ -32,8 +32,8 @@ router.get('/contact', function(req, res, next) {
 
 
 router.get('/business_contact', function(req, res, next) {
-  console.log(business_contact.find());
-  res.render("business_contact", { title: 'Business Contact' });
+  var contact_list = business_contact.find();
+  res.render("business_contact", { title: 'Business Contact', list: contact_list });
 });
 /*
 router.get('/business_contact', (req,res,next)=> {
