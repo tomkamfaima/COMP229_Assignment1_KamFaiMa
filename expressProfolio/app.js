@@ -21,7 +21,7 @@ const methodOverride = require('method-override')
 //routes
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var contactlist = require('./routes/contactlist');
+var contactlistRouter = require('./routes/contactlist');
 
 var app = express();
 
