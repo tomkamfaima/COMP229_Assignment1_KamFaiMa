@@ -7,7 +7,6 @@ var router = express.Router();
 const bcrypt= require('bcrypt');
 const business_contact = require('../models/business_contact')
 const account_info = require('../models/account_info');
-const business_contact = require('../models/business_contact');
 
 /* GET Home page. */
 router.get('/', function(req, res, next) {
