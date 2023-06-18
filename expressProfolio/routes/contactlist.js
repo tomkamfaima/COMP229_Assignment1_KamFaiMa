@@ -12,7 +12,7 @@ router.get('/', (req,res,next) => {
         if(err){
             return console.error(err);
         }else{
-            console.log(list);
+            res.render('business_contact', {title: 'Business Contact', list: list})     
         }
     });
 });

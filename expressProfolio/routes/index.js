@@ -36,11 +36,12 @@ router.get('/register', function(req, res, next) {
   res.render('register', { title: 'Register' });
 });
 
+/*
+
 router.get('/business_contact', function(req, res, next) {
   res.render("business_contact", { title: 'Business Contact' });
 });
 
-/*
 router.get('/business_contact', (req,res,next)=> {
   business_contact.find((err, list) =>{
     if(err){
