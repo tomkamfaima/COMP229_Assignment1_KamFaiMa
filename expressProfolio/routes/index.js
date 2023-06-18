@@ -69,19 +69,14 @@ router.post('/login', (req, res) => {
   }
 });
 */
-router.post('/register', async(req,res) =>{
-  try{
-    const hasedPassword = await bcrypt.hash(req.body.password,10);
+router.post('/register', (req,res) =>{
+    const hasedPassword = bcrypt.hash(req.body.password,10);
     const newUser = new User({
     name: req.body.name,
     email: req.body.email,
     password: hasedPassword
     });
     newUser.save()
-    res.redirect('/login')}catch{
-      res.redirect('/register')
-    }
-    console.log(newUser);
 });
 
 router.post('/update', (req,res) =>{
