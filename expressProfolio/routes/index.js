@@ -5,9 +5,8 @@ Filename: index.js */
 var express = require('express');
 var router = express.Router();
 const bcrypt= require('bcrypt');
-
-const business_contact = require('../models/business_contact')
-const account_info = require('../models/account_info')
+const business_contact = require('./models/business_contact')
+const account_info = require('./models/account_info')
 
 /* GET Home page. */
 router.get('/', function(req, res, next) {
@@ -38,6 +37,16 @@ router.get('/register', function(req, res, next) {
 });
 router.get('/business_contact', function(req, res, next) {
   res.render('business_contact', { title: 'Business Contact' });
+});
+
+router.post('/register', (req,res) =>{
+  const newUser = new account_info({
+    nae: req.body.name,
+    email: req.body.email,
+    password: req.body.password
+  });
+  newUser.save()
+  return res.status(200).json({msg:newUser})
 });
 
 module.exports = router;

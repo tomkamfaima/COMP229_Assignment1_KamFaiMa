@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const account_info_Schema = new mongoose.Schema({
-  ame: {
+  name: {
     type: String,
     required: true
   },
