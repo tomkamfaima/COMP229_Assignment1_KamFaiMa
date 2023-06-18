@@ -40,7 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/busciness_contact'. contactlist);
+app.use('/contact-list'. contactlistRouter);
 
 //setup db
 require('dotenv').config();
