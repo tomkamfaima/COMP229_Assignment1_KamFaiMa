@@ -78,6 +78,23 @@ router.get('/business_contact', async (req,res, next)=>{
   }
 });
 
+router.get('/business_contact/delete/:id', (req,res) =>{
+  let id = req.params.id;
+  Business_contact.remove({_id:id}, (err)=>{
+    if(err){
+      console.log(err);
+      res.end(err);
+    }else{
+      res.redirect('/business_contact')
+    }
+  }); 
+})
+
+
+async function deleteContact() {
+
+}
+
 module.exports = router;
 
 //dotenv, express, bcrypt,passport,express-flash,express-session,method-override, passport-local

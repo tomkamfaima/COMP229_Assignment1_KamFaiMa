@@ -32,8 +32,8 @@
               <td><%= contacts[i].name%></td>
               <td><%= contacts[i].email%></td>
               <td><%= contacts[i].contact_number%></td>
-              <td><img id="edit" src="images/edit.png" alt="Edit" width="5%"></td>
-              <td><img id="delete" src="images/delete.png" alt="Delete" width="5%"></td>
+              <td><img id="edit" src="images/edit.png" alt="Edit" width="10%"></td>
+              <td><a href="/business_contact/delete/<%=contacts[i]._id%>"></a><img id="delete" src="images/delete.png" alt="Delete" width="10%"></a></td>
             </tr>
             <% }%>
         </tbody>
