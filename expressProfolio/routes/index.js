@@ -53,19 +53,13 @@ router.post('/register', (req,res) =>{
 });
 
 router.post('/update', (req,res) =>{
-  business_contact.findOne({email: req.body.email}).then((business_contact)=>{
-    if(business_contact){
-      return res.status(400).json({email: "A user has already registered with this email"})
-    } else{
-      const new_business_contact = new business_contact({
-        name: req.body.name,
-        email: req.body.email,
-        contact_number: req.body.contact_number
-    });
-    new_business_contact.save()
+    const new_business_contact = new business_contact({
+      name: req.body.name,
+      email: req.body.email,
+      contact_number: req.body.contact_number
+      });
+  new_business_contact.save()
   return res.status(200).json({msg:new_business_contact})
-    }
-});
 });
 
 module.exports = router;
