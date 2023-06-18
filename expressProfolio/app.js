@@ -22,10 +22,10 @@ const methodOverride = require('method-override')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+var app = express();
+
 //extract data from form
 app.use(express.urlencoded({extended:false}))
-
-var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
