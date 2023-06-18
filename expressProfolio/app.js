@@ -44,8 +44,7 @@ app.use('/users', usersRouter);
 require('dotenv').config();
 const mongoose = require('mongoose'); 
 
-const url = "mongodb+srv://new_user:comp229@cluster93385.si1n2vb.mongodb.net/?retryWrites=true&w=majority";
-mongoose.connect(process.env.url,{
+mongoose.connect(process.env.DATABASE_URL,{
         useUnifiedTopology:true,
         useNewUrlParser:true
       })
