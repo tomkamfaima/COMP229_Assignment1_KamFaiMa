@@ -17,17 +17,24 @@
        <h1><%= title %></h1>
        <main>
         <form action="/register" method="POST">
-          <div>
-            <label for="name">Password</label>
+          <fieldset>
+            <p>
+            <label for="name">User Name</label>
             <input type="text" id="name" name="name" required>
-          </div>
-            <div>
+          </p>
+          <p>
+            <label for="email">Password</label>
+            <input type="email" id="email" name="email" required>
+        </p>
+          <p>
               <label for="password">Password</label>
               <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit">Login</button>
+          </p>
+          <p>
+            <button class="button" type="submit">Register</button>
+          </p>
           </form>
-          <a href="/login">Login</a>
+          <button class="button" ><a href="/login">Login</a></button>
        </main>
      </div>
      <%- include('partials/footer') %>
