@@ -7,7 +7,8 @@ const business_contact_Schema = new mongoose.Schema({
   },
   email: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   contact_number: {
     type: String,
