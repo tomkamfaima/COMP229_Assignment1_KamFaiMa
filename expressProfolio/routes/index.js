@@ -30,12 +30,12 @@ router.get('/contact', function(req, res, next) {
   res.render('contact', { title: 'Contact Me' });
 });
 
-/*
 
 router.get('/business_contact', function(req, res, next) {
+  console.log(business_contact.find());
   res.render("business_contact", { title: 'Business Contact' });
 });
-
+/*
 router.get('/business_contact', (req,res,next)=> {
   business_contact.find((err, list) =>{
     if(err){
