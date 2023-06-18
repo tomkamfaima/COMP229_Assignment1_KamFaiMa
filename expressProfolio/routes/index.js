@@ -78,11 +78,15 @@ router.get('/business_contact', async (req,res, next)=>{
   }
 });
 
-router.get('/business_contact/delete/:id', (req,res) =>{
-  let id = req.params.id;
-  Business_contact.deleteOne({_id:id});
-  res.redirect('/business_contact');
-})
+router.get('/delete/:id',(req,res,next)=>{
+  deleteContact();
+  res.redirect('./business_contact');
+});
+
+async function deleteContact(req,res,next) {
+  Business_contact.deleteOne(req.params.id);
+  next();
+}
 
 
 module.exports = router;
