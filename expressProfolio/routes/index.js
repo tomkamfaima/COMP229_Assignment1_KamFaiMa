@@ -31,6 +31,9 @@ router.get('/contact', function(req, res, next) {
 router.get('/login', function(req, res, next) {
   res.render('login', { title: 'Login' });
 });
+router.get('/business_contact', function(req, res, next) {
+  res.render('business_contact', { title: 'Business Contact' });
+});
 
 module.exports = router;
 
