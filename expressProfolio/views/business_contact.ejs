@@ -17,18 +17,22 @@
        <h1><%= title %></h1>
        <main>
         <table>
+          <thead>
           <tr>
             <th>Contact Name</th>
             <th>Email</th>
             <th>Contact Number</th>
           </tr>
-            <% for(let count=0;count<business_contactList.length ;count++){ %>
-              <tr>
-                <td><% business_contactList[count].name %></td>
-                <td><% business_contactList[count].email %></td>
-                <td><% business_contactList[count].contact_number %></td>
-              </tr>
-              <% } %>
+        </thead>
+        <tbody>
+          <% for(var i=0;i<data.length;i++) {%>
+            <tr>
+              <td><%= data[i].name%></td>
+              <td><%= data[i].email%></td>
+              <td><%= data[i].contac_number%></td>
+            </tr>
+            <% }%>
+        </tbody>
         </table>
        </main>
      </div>

@@ -35,9 +35,19 @@ router.get('/login', function(req, res, next) {
 router.get('/register', function(req, res, next) {
   res.render('register', { title: 'Register' });
 });
+
 router.get('/business_contact', function(req, res, next) {
-  res.render('business_contact', { title: 'Business Contact' });
+  business_contact.find((err, docs) => {
+      if (!err) {
+          res.render("business_contact", { title: 'Business Contact' }, {
+              data: docs
+          });
+      } else {
+          console.log('Failed to retrieve the business contact list: ' + err);
+      }
+  });
 });
+
 router.get('/update', function(req, res, next) {
   res.render('update', { title: 'Update' });
 });
