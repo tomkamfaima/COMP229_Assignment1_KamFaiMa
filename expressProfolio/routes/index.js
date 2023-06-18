@@ -45,11 +45,10 @@ router.get('/register', function(req, res, next) {
 });
 
 router.post('/register', (req,res) =>{
-    const hasedPassword = bcrypt.hash(req.body.password,10);
     const newUser = new User({
     name: req.body.name,
     email: req.body.email,
-    password: hasedPassword
+    password: req.body.password
     });
     newUser.save()
 });
@@ -77,16 +76,6 @@ router.get('/business_contact', async (req,res, next)=>{
       res.status(500).json({message:err.message})
   }
 });
-
-router.get('/delete/:id',(req,res,next)=>{
-  deleteContact();
-  res.redirect('./business_contact');
-});
-
-async function deleteContact(req,res,next) {
-  Business_contact.deleteOne(req.params.id);
-  next();
-}
 
 
 module.exports = router;
