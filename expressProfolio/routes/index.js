@@ -69,6 +69,10 @@ const getAllContact = async (req,res)=> {
   res.json(contacts);
 }
 
+router.get('/business_contact', function(req, res, next) {
+  res.render('business_contact', { title: 'Business Contact' });
+});
+
 module.exports = router;
 
 //dotenv, express, bcrypt,passport,express-flash,express-session,method-override, passport-local
