@@ -7,7 +7,7 @@ var router = express.Router();
 const mongoose = require('mongoose'); 
 const business_contact = require('../models/business_contact')
 
-router.get('/', (req,res,next) => {
+router.get('/business_contact', (req,res,next) => {
     business_contact.find((err, list) =>{
         if(err){
             return console.error(err);
