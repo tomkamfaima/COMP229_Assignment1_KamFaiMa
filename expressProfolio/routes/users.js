@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 
 
 router.post("/register", function (req, res) {
-  User.register(new User({ email: req.body.email, username: req.body.username }), req.body.password, function (err, user) {
+  User.register(new User({ email: req.body.email, name: req.body.name }), req.body.password, function (err, user) {
       if (err) {
           res.json({ success: false, message: "Your account could not be saved. Error: " + err });
       }
