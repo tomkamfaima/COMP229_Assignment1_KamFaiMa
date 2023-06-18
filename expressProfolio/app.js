@@ -39,7 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/list',contactRouter);
+app.use('/business_contact',contactRouter);
 
 //setup db
 require('dotenv').config();
