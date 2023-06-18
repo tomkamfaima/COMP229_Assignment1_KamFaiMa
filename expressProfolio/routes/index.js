@@ -32,7 +32,7 @@ router.get('/contact', function(req, res, next) {
 
 
 router.get('/business_contact', function(req, res, next) {
-  res.render('business_contact', { title: 'Business Contact', list: business_contact.find({})});
+  res.render('business_contact', { title: 'Business Contact', list: business_contact.find({name: "atest"})});
 });
 /*
 router.get('/business_contact', (req,res,next)=> {
