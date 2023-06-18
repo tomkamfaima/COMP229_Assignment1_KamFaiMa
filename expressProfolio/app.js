@@ -20,7 +20,7 @@ const methodOverride = require('method-override')
 //routes
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var business_contactRouter = require('./routes/list');
+var contactRouter = require('./routes/business_contact');
 
 var app = express();
 
@@ -39,12 +39,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/contact-list', business_contactRouter);
+app.use('/list',contactRouter);
 
 //setup db
 require('dotenv').config();
 const mongoose = require('mongoose'); 
-const business_contact = require('./models/business_contact');
+const Business_contact = require('./models/business_contact');
 const User = require('./models/user');
 
 mongoose.connect("mongodb+srv://new_user:comp229@cluster93385.si1n2vb.mongodb.net/?retryWrites=true&w=majority",{

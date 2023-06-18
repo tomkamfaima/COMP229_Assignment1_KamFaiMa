@@ -5,7 +5,7 @@ Filename: index.js */
 var express = require('express');
 var router = express.Router();
 const bcrypt= require('bcrypt');
-const business_contact = require('../models/business_contact')
+const Business_contact = require('../models/business_contact')
 const User = require('../models/user');
 
 /* GET Home page. */
@@ -30,23 +30,6 @@ router.get('/contact', function(req, res, next) {
   res.render('contact', { title: 'Contact Me' });
 });
 
-
-router.get('/business_contact', function(req, res, next) {
-  business_contact.find({}, function (err, list){
-  res.render('business_contact', { title: 'Business Contact', list: list});
-  });
-});
-/*
-router.get('/business_contact', (req,res,next)=> {
-  business_contact.find((err, list) =>{
-    if(err){
-      return console.error(err);
-    }else{
-      res.render('business_contact', {title: 'Business Contact', list:list})
-    }
-  });
-});*/
-
 router.get('/update', function(req, res, next) {
   res.render('update', { title: 'Update' });
 });
@@ -61,15 +44,6 @@ router.get('/register', function(req, res, next) {
   res.render('register', { title: 'Register' });
 });
 
-/*
-router.post('/login', (req, res) => {
-  if(!req.body.name){
-    res.json({success:false, message:"Username was not given"})
-  }else if(!req.body.password){
-    res.json({success:false, message:"Password was not given"})
-  }
-});
-*/
 router.post('/register', (req,res) =>{
     const hasedPassword = bcrypt.hash(req.body.password,10);
     const newUser = new User({
@@ -81,7 +55,7 @@ router.post('/register', (req,res) =>{
 });
 
 router.post('/update', (req,res) =>{
-    const new_business_contact = new business_contact({
+    const new_business_contact = new Business_contact({
       name: req.body.name,
       email: req.body.email,
       contact_number: req.body.contact_number
@@ -89,6 +63,11 @@ router.post('/update', (req,res) =>{
   new_business_contact.save()
   return res.status(200).json({msg:new_business_contact})
 });
+
+const getAllContact = async (req,res)=> {
+  const contacts = await Business_contact.find();
+  res.json(contacts);
+}
 
 module.exports = router;
 
