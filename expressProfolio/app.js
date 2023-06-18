@@ -99,16 +99,17 @@ app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
 app.get('/register', checkNotAuthenticated, (req, res) => {
   res.render('register.ejs')
 })
+const users = [];
 
 app.post('/register', checkNotAuthenticated, async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10)
-    const newUser = new User({
+    users.push({
+      id: Date.now().toString(),
       name: req.body.name,
       email: req.body.email,
       password: hashedPassword
-    });
-    newUser.save()
+    })
     res.redirect('/login')
   } catch {
     res.redirect('/register')
