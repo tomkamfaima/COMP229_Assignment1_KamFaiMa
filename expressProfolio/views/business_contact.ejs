@@ -16,6 +16,20 @@
        <%- include('partials/navbar') %>
        <h1><%= title %></h1>
        <main>
+        <table>
+          <tr>
+            <th>Contact Name</th>
+            <th>Email</th>
+            <th>Contact Number</th>
+          </tr>
+            <% for(let count=0;count<business_contactList.length ;count++){ %>
+              <tr>
+                <td><% business_contactList[count].name></td>
+                <td><% business_contactList[count].email></td>
+                <td><% business_contactList[count].contact_number></td>
+              </tr>
+              <% } %>
+        </table>
        </main>
      </div>
      <%- include('partials/footer') %>
