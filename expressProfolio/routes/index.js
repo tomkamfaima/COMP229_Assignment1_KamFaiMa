@@ -6,7 +6,7 @@ var express = require('express');
 var router = express.Router();
 const bcrypt= require('bcrypt');
 const business_contact = require('../models/business_contact')
-const account_info = require('../models/account_info');
+const account_info = require('../models/user');
 
 /* GET Home page. */
 router.get('/', function(req, res, next) {
@@ -67,7 +67,7 @@ router.post('/login', (req, res) => {
     res.json({success:false, message:"Password was not given"})
   }
 });
-
+/*
 router.post('/register', (req,res) =>{
   const newUser = new account_info({
     name: req.body.name,
@@ -77,7 +77,7 @@ router.post('/register', (req,res) =>{
   newUser.save()
   return res.status(200).json({msg:newUser})
 });
-
+*/
 router.post('/update', (req,res) =>{
     const new_business_contact = new business_contact({
       name: req.body.name,
