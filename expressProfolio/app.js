@@ -3,33 +3,27 @@ Student ID: 301276248
 Date:   06/04/2023
 Filename: app.js */
 require('dotenv').config();
-const mongoose = require('mongoose'); 
 
-const db = async () => {
-  try{
-    await mongoose.connect(process.env.DATABASE_URL,{
-      useUnifiedTopology:true,
-      useNewUrlParser:true
-    })
-  }catch (err){
-    console.log(err);
-  }
-}
-db();
-
-const passport = require('passport')
-const flash = require('express-flash')
-const session = require('express-session')
-const methodOverride = require('method-override')
-
+//third parties dependencies
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+//for authenication
+const passport = require('passport')
+const flash = require('express-flash')
+const session = require('express-session')
+
+const methodOverride = require('method-override')
+
+//routes
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+
+//extract data from form
+app.use(express.urlencoded({extended:false}))
 
 var app = express();
 
@@ -46,6 +40,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+//setup db
+let db = require('./db')
+db.Connect();
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -61,9 +59,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-mongoose.connection.once('open', ()=>{
-  console.log('Connected to MongoDB');
-})
 
 module.exports = app;

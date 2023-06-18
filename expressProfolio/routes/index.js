@@ -5,8 +5,6 @@ Filename: index.js */
 var express = require('express');
 var router = express.Router();
 const bcrypt= require('bcrypt');
-//extract data from form
-app.use(express.urlencoded({extended:false}))
 
 const business_contact = require('../models/business_contact')
 const account_info = require('../models/account_info')
