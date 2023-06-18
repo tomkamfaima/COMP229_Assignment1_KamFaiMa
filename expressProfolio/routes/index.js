@@ -67,8 +67,8 @@ router.post('/login', (req, res) => {
   }else if(!req.body.password){
     res.json({success:false, message:"Password was not given"})
   }
-});*/
-
+});
+*/
 router.post('/register', (req,res) =>{
   const newUser = new user({
     name: req.body.name,
@@ -76,7 +76,7 @@ router.post('/register', (req,res) =>{
     password: req.body.password
   });
   newUser.save()
-  res.redirect('/login')
+  return res.status(200).json({msg:newUser})
 });
 
 router.post('/update', (req,res) =>{
