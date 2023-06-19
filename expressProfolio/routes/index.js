@@ -83,10 +83,4 @@ router.get('/business_contact', async (req,res, next)=>{
   }
 });
 
-router.get('/delete/:id', (req,res)=>{
-    Business_contact.deleteOne({_id: req.params.id});
-    const contacts =  Business_contact.find();
-    res.render('business_contact', { title: 'Business Contact', contacts:contacts })
-  });
-
 module.exports = router;

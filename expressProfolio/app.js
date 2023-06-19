@@ -126,6 +126,11 @@ function checkAuthenticated(req, res, next) {
   res.redirect('/login')
 }
 
+app.get('/delete/:id', (req,res)=>{
+  Business_contact.deleteOne({_id: req.params.id});
+  res.redirect('/business_contact');
+});
+
 function checkNotAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return res.redirect('/business_contact')
