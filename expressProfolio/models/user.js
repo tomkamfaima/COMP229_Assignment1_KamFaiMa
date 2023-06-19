@@ -1,8 +1,7 @@
-let mongoose = require('mongoose');
-let passportLocalMongoose = require('passport-local-mongoose');
+const mongoose = require('mongoose')
 
-let userSchema = mongoose.Schema({
-  username: {
+const userSchema = new mongoose.Schema({
+  name: {
     type: String,
     required: true,
     unique: true
@@ -11,12 +10,13 @@ let userSchema = mongoose.Schema({
     type: String,
     required: true,
     unique: true
+  },
+  password: {
+    type: String,
+    required: true
   }
 });
 
-let options = ({missingPasswordError:'Wrong / Missing Password'})
-
-userSchema.plugin(passportLocalMongoose,options);
 
 module.exports.userSchema = mongoose.model('User', userSchema);
 

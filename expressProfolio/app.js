@@ -19,29 +19,6 @@ const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
 
-const initializePassport = require('./passport-config')
-initializePassport(
-  passport,
-  email => users.find(user => user.email === email),
-  id => users.find(user => user.id === id)
-)
-const users = []
-
-app.use(session({
-  secret: "SomeSecret",
-  saveUninitialized:false,
-  resave: false
-}));
-
-app.use(flash())
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false
-}))
-app.use(passport.initialize())
-app.use(passport.session())
-app.use(methodOverride('_method'))
 
 //routes
 var indexRouter = require('./routes/index');
@@ -82,6 +59,31 @@ app.get('/business_contact', checkAuthenticated, (req, res) => {
   res.render('business_contact.ejs', { name: req.user.name })
 })
 
+const users = [{name:'test', email:'test@gmail.com', password:'test'}];
+
+const initializePassport = require('./passport-config')
+initializePassport(
+  passport,
+  email => users.find(user => user.email === email),
+  id => users.find(user => user.id === id)
+)
+
+app.use(session({
+  secret: "SomeSecret",
+  saveUninitialized:false,
+  resave: false
+}));
+
+app.use(flash())
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false
+}))
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(methodOverride('_method'))
+
 app.get('/login', checkNotAuthenticated, (req, res) => {
   res.render('login.ejs')
 })
@@ -105,6 +107,7 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
       email: req.body.email,
       password: hashedPassword
     })
+    console.log(users);
     res.redirect('/login')
   } catch {
     res.redirect('/register')
