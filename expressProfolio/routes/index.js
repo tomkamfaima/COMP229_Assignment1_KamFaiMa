@@ -7,6 +7,7 @@ var router = express.Router();
 const bcrypt= require('bcrypt');
 const Business_contact = require('../models/business_contact')
 const User = require('../models/user');
+const { render } = require('ejs');
 
 /* GET Home page. */
 router.get('/', function(req, res, next) {
@@ -82,18 +83,13 @@ router.get('/business_contact', async (req,res, next)=>{
   }
 });
 
+router.get('/business_contact/delete/:id', async (req,res, next)=>{
+  Business_contact.deleteOne({_id: req.params.id});
+  try{
+    const contacts = await Business_contact.find();
+    res.render('business_contact', { title: 'Business Contact', contacts:contacts });
+}catch (err){
+    res.status(500).json({message:err.message})
+}});
 
 module.exports = router;
-
-//dotenv, express, bcrypt,passport,express-flash,express-session,method-override, passport-local
-//const bcrpyt = require('bcrpyt');
-//const initializePassport
-//passport config at root 
-// npm install bcrpty passport...
-//view-engine ejs
-//extract data from form: app.use(express.urlencoded({extended:false}))
-//flash
-// get (visti the url)request and post (entering id and pw and click login)request for loging
-//repeat password
-//hashed password
-//app.post for logout instead of app.delete 
