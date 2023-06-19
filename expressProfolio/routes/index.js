@@ -53,14 +53,19 @@ router.post('/register', (req,res) =>{
     newUser.save()
 });
 
-router.post('/update', (req,res) =>{
+router.post('/update', async(req,res) =>{
     const new_business_contact = new Business_contact({
       name: req.body.name,
       email: req.body.email,
       contact_number: req.body.contact_number
       });
-  new_business_contact.save()
-  res.render('business_contact', { title: 'Business Contact' });
+  new_business_contact.save();
+  try{
+    const contacts = await Business_contact.find();
+    res.render('business_contact', { title: 'Business Contact', contacts:contacts });
+}catch (err){
+    res.status(500).json({message:err.message})
+}
 });
 
 const getAllContact = async (req,res)=> {
