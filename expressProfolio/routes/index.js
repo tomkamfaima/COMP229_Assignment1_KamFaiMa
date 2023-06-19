@@ -83,13 +83,13 @@ router.get('/business_contact', async (req,res, next)=>{
   }
 });
 
-router.get('/business_contact/delete/:id', async (req,res, next)=>{
-  Business_contact.deleteOne({_id: req.params.id});
+router.get('/delete/:id', async (req,res, next)=>{
   try{
+    Business_contact.deleteOne({_id: req.params.id});
     const contacts = await Business_contact.find();
-    res.render('business_contact', { title: 'Business Contact', contacts:contacts });
 }catch (err){
-    res.status(500).json({message:err.message})
-}});
+    res.status(500).json({message:err.message})}
+  res.render('business_contact', { title: 'Business Contact', contacts:contacts })
+  });
 
 module.exports = router;
