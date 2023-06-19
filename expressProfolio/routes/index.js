@@ -60,7 +60,7 @@ router.post('/update', (req,res) =>{
       contact_number: req.body.contact_number
       });
   new_business_contact.save()
-  return res.status(200).json({msg:new_business_contact})
+  res.render('business_contact', { title: 'Business Contact' });
 });
 
 const getAllContact = async (req,res)=> {
