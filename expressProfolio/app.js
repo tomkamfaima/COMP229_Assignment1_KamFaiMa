@@ -126,8 +126,8 @@ function checkAuthenticated(req, res, next) {
   res.redirect('/login')
 }
 
-app.get('/delete/:id', (req,res)=>{
-  Business_contact.deleteOne({_id: req.params.id});
+app.get('/delete/:id', async(req,res)=>{
+  await Business_contact.deleteOne({_id: req.params.id});
   res.redirect('/business_contact');
 });
 
