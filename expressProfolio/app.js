@@ -10,15 +10,22 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var app = express();
 
 //for authenication
-const passport = require('passport');
-const passportLocal = require('passport-local');
-const localStrategy = passportLocal.Strategy;
-const flash = require('connect-flash');
-const session = require('express-session');
-const methodOverride = require('method-override');
+const bcrypt = require('bcrypt')
+const passport = require('passport')
+const flash = require('express-flash')
+const session = require('express-session')
+const methodOverride = require('method-override')
 
+const initializePassport = require('./passport-config')
+initializePassport(
+  passport,
+  email => users.find(user => user.email === email),
+  id => users.find(user => user.id === id)
+)
+const users = []
 
 app.use(session({
   secret: "SomeSecret",
@@ -26,22 +33,19 @@ app.use(session({
   resave: false
 }));
 
-app.use(flash());
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(flash())
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false
+}))
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(methodOverride('_method'))
 
-//passport user configuration
-//create a user model instance
-let userModel = require('./models/user');
-let User = userModel.User;
-//serialize and deserialize the user info
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUserr());
 //routes
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
-var app = express();
 
 //extract data from form
 app.use(express.urlencoded({extended:false}))
@@ -72,6 +76,59 @@ mongoose.connect("mongodb+srv://new_user:comp229@cluster93385.si1n2vb.mongodb.ne
 const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
 db.once('open', () => console.log('Connected to Database'));
+
+
+app.get('/business_contact', checkAuthenticated, (req, res) => {
+  res.render('business_contact.ejs', { name: req.user.name })
+})
+
+app.get('/login', checkNotAuthenticated, (req, res) => {
+  res.render('login.ejs')
+})
+
+app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
+  successRedirect: '/business_contact',
+  failureRedirect: '/login',
+  failureFlash: true
+}))
+
+app.get('/register', checkNotAuthenticated, (req, res) => {
+  res.render('register.ejs')
+})
+
+app.post('/register', checkNotAuthenticated, async (req, res) => {
+  try {
+    const hashedPassword = await bcrypt.hash(req.body.password, 10)
+    users.push({
+      id: Date.now().toString(),
+      name: req.body.name,
+      email: req.body.email,
+      password: hashedPassword
+    })
+    res.redirect('/login')
+  } catch {
+    res.redirect('/register')
+  }
+})
+
+app.post('/logout', (req, res) => {
+  req.logOut()
+  res.redirect('/login')
+})
+
+function checkAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next()
+  }
+  res.redirect('/login')
+}
+
+function checkNotAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return res.redirect('/business_contact')
+  }
+  next()
+}
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
