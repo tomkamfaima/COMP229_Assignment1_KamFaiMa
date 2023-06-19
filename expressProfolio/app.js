@@ -68,12 +68,6 @@ initializePassport(
   id => users.find(user => user.id === id)
 )
 
-app.use(session({
-  secret: "SomeSecret",
-  saveUninitialized:false,
-  resave: false
-}));
-
 app.use(flash())
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -129,6 +123,10 @@ function checkAuthenticated(req, res, next) {
 app.get('/delete/:id', async(req,res)=>{
   await Business_contact.deleteOne({_id: req.params.id});
   res.redirect('/business_contact');
+});
+app.get('/update/:id', async(req,res)=>{
+  await Business_contact.deleteOne({_id: req.params.id});
+  res.redirect('/update');
 });
 
 function checkNotAuthenticated(req, res, next) {
