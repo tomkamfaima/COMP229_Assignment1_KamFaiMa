@@ -12,11 +12,31 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 //for authenication
-const passport = require('passport')
-const flash = require('express-flash')
-const session = require('express-session')
-const methodOverride = require('method-override')
+const passport = require('passport');
+const passportLocal = require('passport-local');
+const localStrategy = passportLocal.Strategy;
+const flash = require('connect-flash');
+const session = require('express-session');
+const methodOverride = require('method-override');
 
+
+app.use(session({
+  secret: "SomeSecret",
+  saveUninitialized:false,
+  resave: false
+}));
+
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+
+//passport user configuration
+//create a user model instance
+let userModel = require('./models/user');
+let User = userModel.User;
+//serialize and deserialize the user info
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUserr());
 //routes
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');

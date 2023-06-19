@@ -16,11 +16,11 @@
        <%- include('partials/navbar') %>
        <h1><%= title %></h1>
        <main>
-        <form action="/register" method="POST">
+        <form action="/login" method="POST" autocomplete="off">
           <fieldset>
             <p>
-            <label for="name">User Name</label>
-            <input type="text" id="name" name="name" required>
+            <label for="Username">Username</label>
+            <input type="text" id="username" name="username" required>
           </p>
           <p>
             <label for="email">Email</label>
@@ -31,7 +31,7 @@
               <input type="password" id="password" name="password" required>
           </p>
           <p>
-            <button class="button" type="submit">Register</button>
+            <button class="button" type="submit" value="Login">Login</button>
           </p>
           </form>
           <button class="button" ><a href="/login">Login</a></button>
