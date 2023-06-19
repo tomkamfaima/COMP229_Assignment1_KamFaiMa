@@ -83,13 +83,10 @@ router.get('/business_contact', async (req,res, next)=>{
   }
 });
 
-router.get('/delete/:id', async (req,res, next)=>{
-  try{
+router.get('/delete/:id', (req,res)=>{
     Business_contact.deleteOne({_id: req.params.id});
-    const contacts = await Business_contact.find();
+    const contacts =  Business_contact.find();
     res.render('business_contact', { title: 'Business Contact', contacts:contacts })
-}catch (err){
-    res.status(500).json({message:err.message})}
   });
 
 module.exports = router;
