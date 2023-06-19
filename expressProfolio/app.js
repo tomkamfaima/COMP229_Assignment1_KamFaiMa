@@ -59,54 +59,66 @@ app.get('/business_contact', checkAuthenticated, (req, res) => {
   res.render('business_contact.ejs', { name: req.user.name })
 })
 
-const users = [{name:'test', email:'test@gmail.com', password:'test'}];
-
-const initializePassport = require('./passport-config')
+const initializePassport = require('./passport-config');
 initializePassport(
   passport,
-  email => users.find(user => user.email === email),
-  id => users.find(user => user.id === id)
+  email => User.find(User => User.email === email),
+  id => User.find(User => User.id === id)
 )
 
-app.use(flash())
 app.use(session({
-  secret: process.env.SESSION_SECRET,
+  secret: "SomeSecret",
   resave: false,
   saveUninitialized: false
 }))
+app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(methodOverride('_method'))
 
-app.get('/login', checkNotAuthenticated, (req, res) => {
+app.get('/login',  (req, res) => {
   res.render('login.ejs')
 })
 
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
   successRedirect: '/business_contact',
-  failureRedirect: '/login',
+  failureRedirect: '/register',
   failureFlash: true
 }))
-
-app.get('/register', checkNotAuthenticated, (req, res) => {
+/*
+app.get('/register', (req, res) => {
   res.render('register.ejs')
-})
-
-app.post('/register', checkNotAuthenticated, async (req, res) => {
+})*/
+/*
+app.post('/register', async (req, res) => {
   try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10)
-    users.push({
-      id: Date.now().toString(),
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    await User.create({
       name: req.body.name,
       email: req.body.email,
       password: hashedPassword
-    })
-    console.log(users);
-    res.redirect('/login')
-  } catch {
-    res.redirect('/register')
+      });
+  } catch (err){
+    console.log(err);
   }
-})
+})*/
+
+app.post("/register", async (req, res) =>{
+  const hashedPassword = await bcrypt.hash(req.body.password,10);
+  const user = new User({
+    name : req.body.name,
+    email : req.body.email,
+    password : hashedPassword
+  })
+    try {
+      const newUser = await user.save()
+      res.status(201).json(newUser)
+      redirect('/business_contact');
+    } catch (err) {
+      res.status(400).json({ message: err.message })
+    }
+});
+
 
 app.post('/logout', (req, res) => {
   req.logOut()
@@ -131,6 +143,7 @@ app.get('/update/:id', async(req,res)=>{
 
 function checkNotAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
+    console.log("success");
     return res.redirect('/business_contact')
   }
   next()
@@ -151,5 +164,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
+app.listen(3001);
 module.exports = app;

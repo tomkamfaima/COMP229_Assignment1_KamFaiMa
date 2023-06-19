@@ -44,7 +44,7 @@ router.get('/login', function(req, res, next) {
 router.get('/register', function(req, res, next) {
   res.render('register', { title: 'Register' });
 });
-
+/*
 router.post('/register', (req,res) =>{
     const newUser = new User({
     name: req.body.name,
@@ -52,7 +52,7 @@ router.post('/register', (req,res) =>{
     password: req.body.password
     });
     newUser.save()
-});
+});*/
 
 router.post('/update', async(req,res) =>{
     const new_business_contact = new Business_contact({
@@ -68,11 +68,6 @@ router.post('/update', async(req,res) =>{
     res.status(500).json({message:err.message})
 }
 });
-
-const getAllContact = async (req,res)=> {
-  const contacts = await Business_contact.find();
-  res.json(contacts);
-}
 
 router.get('/business_contact', async (req,res, next)=>{
   try{

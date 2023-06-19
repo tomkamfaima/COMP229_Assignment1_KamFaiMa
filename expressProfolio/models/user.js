@@ -15,8 +15,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   }
+},
+{
+  collection : '_user'
 });
 
 
-module.exports.userSchema = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema);
 
