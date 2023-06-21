@@ -2,7 +2,7 @@
       Author: Kam Fai, Ma
       Student ID: 301276248
       Date:   06/17/2023
-      Filename: login.ejs
+      Filename: addBus.ejs
    -->
    <!DOCTYPE html>
    <html>
@@ -16,25 +16,25 @@
        <%- include('partials/navbar') %>
        <h1><%= title %></h1>
        <main>
-        <form action="/register" method="POST">
+        <form action="/addBus" method="POST">
           <fieldset>
             <p>
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" autocomplete="off" required>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
           </p>
           <p>
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" autocomplete="off" required>
+            <input type="email" id="email" name="email" required>
         </p>
           <p>
-              <label for="password">Password</label>
-              <input type="password" id="password" name="password" autocomplete="off" required>
+              <label for="contact_number">Contact Number</label>
+              <input type="text" id="contact_number" name="contact_number" required>
           </p>
           <p>
-            <button class="button" type="submit" value="Register">Register</button>
+            <button class="button" type="submit">Add</button>
           </p>
           </form>
-          <button class="button" ><a href="/login">Login</a></button>
+          <button class="button" ><a href="/business_contact">Business Contact</a></button>
        </main>
      </div>
      <%- include('partials/footer') %>

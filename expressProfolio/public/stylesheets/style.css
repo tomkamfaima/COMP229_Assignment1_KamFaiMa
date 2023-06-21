@@ -177,3 +177,7 @@ table td{
 .footer{
   color: white;
 }
+
+.readOnly{
+  background-color: #848282;
+}
