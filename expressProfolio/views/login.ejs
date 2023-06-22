@@ -19,10 +19,13 @@
               <label for="password">Password</label>
               <input type="password" id="password" name="password" required>
           </p>
+          <p id="logInMessage"><%= logInMessage%></p>
           <p>
-            <button class="button" type="submit">Login</button>
+            <div class="buttonContainer">
+            <button class="button" class="button" type="submit">Login</button>
+            <button class="button" class="button" ><a href="/register">Register</a></button>
+          </div>
           </p>
           </form>
-          <button class="button" ><a href="/register">Register</a></button>
        </main>
      <%- include('partials/footer') %>

@@ -24,10 +24,14 @@
               <input type="text" id="contact_number" name="contact_number" value="<%= user.contact_number %>"  required>
           </p>
           <p>
+            <div class="buttonContainer">
             <button class="button" type="submit">Update</button>
             <button class="button" onclick="location.href='/delete/<%= user._id %>'">Delete</button>
+          </div>
           </p>
           </form>
+          <div class="buttonContainer">
           <button class="button" ><a href="/business_contact">Business Contact</a></button>
+        </div>
        </main>
      <%- include('partials/footer') %>

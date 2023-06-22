@@ -72,7 +72,7 @@ figcaption {
   display: block;
   text-align: center;
 }
-#buttonAbout, #buttonResume{
+.button{
   background-color: #699ABD;
   color: white;
   font-size: larger;
@@ -92,7 +92,7 @@ nav ul li {
   display: inline-block;
 }
 
-nav a:link, a:visited  {
+a:link, a:visited  {
   text-decoration: none;
   color: white;
 }
@@ -180,4 +180,10 @@ table td{
 
 .readOnly{
   background-color: #848282;
+}
+
+#logInMessage, #regMessage {
+  text-align: center;
+  color: red;
+  min-height: 20px;
 }

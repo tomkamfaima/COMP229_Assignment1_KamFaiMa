@@ -1,5 +1,11 @@
+/*
+Author: Kam Fai, Ma
+Student ID: 301276248
+Date:   06/18/2023
+Filename: business_contact.js */
 const mongoose = require('mongoose')
 
+//create schema and model for business contact
 const business_contact_Schema = new mongoose.Schema({
   name: {
     type: String,

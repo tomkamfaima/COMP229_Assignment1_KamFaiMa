@@ -23,10 +23,13 @@
               <label for="password">Password</label>
               <input type="password" id="password" name="password" autocomplete="off" required>
           </p>
+          <p id="regMessage"><%= regMessage%></p>
           <p>
+            <div class="buttonContainer">
             <button class="button" type="submit" value="Register">Register</button>
+            <button class="button" ><a href="/login">Login</a></button>
+            <div class="buttonContainer"></div>
           </p>
           </form>
-          <button class="button" ><a href="/login">Login</a></button>
        </main>
      <%- include('partials/footer') %>

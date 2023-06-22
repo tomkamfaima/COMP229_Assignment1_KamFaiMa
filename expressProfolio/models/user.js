@@ -1,5 +1,11 @@
+/*
+Author: Kam Fai, Ma
+Student ID: 301276248
+Date:   06/18/2023
+Filename: user.js */
 const mongoose = require('mongoose')
 
+//create schema and model for user
 const userSchema = new mongoose.Schema({
   name: {
     type: String,

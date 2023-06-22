@@ -2,30 +2,26 @@
 Student ID: 301276248
 Date:   06/04/2023
 Filename: app.js */
+
 //Get value stored in .env
 require('dotenv').config();
 
 //third parties dependencies
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var app = express();
-const jwt = require('jsonwebtoken')
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const app = express();
 
 
 //for authenication
 const bcrypt = require('bcrypt')
-
+const jwt = require('jsonwebtoken')
 
 //routes
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
-
-//extract data from form
-app.use(express.urlencoded({extended:false}))
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -45,6 +41,7 @@ const mongoose = require('mongoose');
 const Business_contact = require('./models/business_contact');
 const User = require('./models/user');
 
+//connect to db, using DB_URL from .env
 mongoose.connect(process.env.DB_URL,{
         useUnifiedTopology:true,
         useNewUrlParser:true
