@@ -2,6 +2,7 @@
 Student ID: 301276248
 Date:   06/04/2023
 Filename: app.js */
+//Get value stored in .env
 require('dotenv').config();
 
 //third parties dependencies
@@ -12,7 +13,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var app = express();
 const jwt = require('jsonwebtoken')
-const jwtSecret  = "fef165c39c78bd62f649ea39c0ed24a9192659dcee3aa3ff5ae9ea3e7a4a71d670eaea";
 
 
 //for authenication
@@ -41,40 +41,17 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 //setup db
-require('dotenv').config();
 const mongoose = require('mongoose'); 
 const Business_contact = require('./models/business_contact');
 const User = require('./models/user');
 
-mongoose.connect("mongodb+srv://new_user:comp229@cluster93385.si1n2vb.mongodb.net/?retryWrites=true&w=majority",{
+mongoose.connect(process.env.DB_URL,{
         useUnifiedTopology:true,
         useNewUrlParser:true
       })
 const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
 db.once('open', () => console.log('Connected to Database'));
-
-app.post("/register", async (req, res) =>{
-  const hashedPassword = await bcrypt.hash(req.body.password,10);
-  const user = new User({
-    name : req.body.name,
-    email : req.body.email,
-    password : hashedPassword
-  })
-    try {
-      const newUser = await user.save()
-      res.redirect('/business_contact');
-    } catch (err) {
-      res.status(400).json({ message: err.message })
-    }
-});
-
-
-
-app.get('/delete/:id', async(req,res)=>{
-  await Business_contact.deleteOne({_id: req.params.id});
-  res.redirect('/business_contact');
-});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

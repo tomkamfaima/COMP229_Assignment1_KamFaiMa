@@ -10,7 +10,6 @@ const User = require('../models/user');
 const { render } = require('ejs');
 
 const jwt = require('jsonwebtoken')
-const jwtSecret  = "fef165c39c78bd62f649ea39c0ed24a9192659dcee3aa3ff5ae9ea3e7a4a71d670eaea";
 var _inOut;
 
 
@@ -18,7 +17,7 @@ function checkInOut(_req){
   const token = _req.cookies.jwt;
   if(token){
     console.log(token);
-    jwt.verify(token, jwtSecret, (err,decodedToken) => {
+    jwt.verify(token, process.env.jwtSecret, (err,decodedToken) => {
       if(err){
         res.status(400).json({ message: err.message });
       }else{
@@ -61,7 +60,7 @@ router.get('/addBus', function(req, res, next) {
     if(!token){
       res.render('login', { title: 'Login', inOut: _inOut });
     }else{
-      jwt.verify(token, jwtSecret, (err,decodedToken) => {
+      jwt.verify(token, process.env.jwtSecret, (err,decodedToken) => {
         if(err){
           res.render('login', { title: 'Login', inOut: _inOut });
         }else{
@@ -78,7 +77,7 @@ router.get('/login', function(req, res, next) {
   if(!token){
   res.render('login', { title: 'Login', inOut: _inOut });}
   else{
-    jwt.verify(token, jwtSecret, (err, decodedToken)=> {
+    jwt.verify(token, process.env.jwtSecret, (err, decodedToken)=> {
       if(err){
         res.render('login', { title: 'Login', inOut: _inOut });
       }else {
@@ -93,6 +92,21 @@ router.get('/register', function(req, res, next) {
   res.render('register', { title: 'Register' , inOut: _inOut});
 });
 
+router.post("/register", async (req, res) =>{
+  const hashedPassword = await bcrypt.hash(req.body.password,10);
+  const user = new User({
+    name : req.body.name,
+    email : req.body.email,
+    password : hashedPassword
+  })
+    try {
+      const newUser = await user.save()
+      res.redirect('/business_contact');
+    } catch (err) {
+      res.status(400).json({ message: err.message })
+    }
+});
+
 router.get('/business_contact', async(req,res,next)=>{
   checkInOut(req);
   try{
@@ -101,7 +115,7 @@ router.get('/business_contact', async(req,res,next)=>{
     if(!token){
       res.render('login', { title: 'Login', inOut: _inOut });
     }else{
-      jwt.verify(token, jwtSecret, (err,decodedToken) => {
+      jwt.verify(token, process.env.jwtSecret, (err,decodedToken) => {
         if(err){
           res.render('login', { title: 'Login', inOut: _inOut });
         }else{
@@ -114,8 +128,12 @@ router.get('/business_contact', async(req,res,next)=>{
   }
 })
 
-router.get('/update/:id', async(req,res)=>{
-  checkInOut(req);
+router.get('/delete/:id', async(req,res)=>{
+  await Business_contact.deleteOne({_id: req.params.id});
+  res.redirect('/business_contact');
+});
+
+router.get('/update/:id', async(req,res,next)=>{
   try{
   const user = await Business_contact.findOne({_id: req.params.id});
   res.render('update', { title: 'Update', user:user , inOut: _inOut});
@@ -166,7 +184,7 @@ router.post('/login', async(req, res, next) => {
             if (data) {
               const maxAge = 3600;
               const token = jwt.sign({
-                id:user._id, email: _email}, jwtSecret,{expiresIn: maxAge}
+                id:user._id, email: _email}, process.env.jwtSecret,{expiresIn: maxAge}
               );
               res.cookie("jwt", token, {
                 httpOnly: true,
