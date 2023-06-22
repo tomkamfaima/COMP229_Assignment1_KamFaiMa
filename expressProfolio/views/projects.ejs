@@ -4,14 +4,7 @@
       Date:   06/04/2023
       Filename: project.ejs
    -->
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <div id="allPage">
+    <%- include('partials/header') %>
     <%- include('partials/banner') %>
     <%- include('partials/navbar') %>
     <h1><%= title %></h1>
@@ -40,7 +33,4 @@
         </tbody>
       </table>
     </main>
-  </div>
   <%- include('partials/footer') %>
-  </body>
-</html>

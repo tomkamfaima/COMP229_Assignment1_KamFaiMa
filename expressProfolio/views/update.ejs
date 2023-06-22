@@ -4,14 +4,7 @@
       Date:   06/17/2023
       Filename: update.ejs
    -->
-   <!DOCTYPE html>
-   <html>
-     <head>
-       <title><%= title %></title>
-       <link rel='stylesheet' href='/stylesheets/style.css' />
-     </head>
-     <body>
-       <div id="allPage">
+   <%- include('partials/header') %>
        <%- include('partials/banner') %>
        <%- include('partials/navbar') %>
        <h1><%= title %></h1>
@@ -37,7 +30,4 @@
           </form>
           <button class="button" ><a href="/business_contact">Business Contact</a></button>
        </main>
-     </div>
      <%- include('partials/footer') %>
-     </body>
-   </html>

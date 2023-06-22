@@ -4,16 +4,9 @@
       Date:   06/17/2023
       Filename: business_contact.ejs
    -->
-   <!DOCTYPE html>
-   <html>
-     <head>
-       <title><%= title %></title>
-       <link rel='stylesheet' href='/stylesheets/style.css' />
-     </head>
-     <body>
-       <div id="allPage">
-       <%- include('partials/banner') %>
-       <%- include('partials/navbar') %>
+    <%- include('partials/header') %>
+    <%- include('partials/banner') %>
+    <%- include('partials/navbar') %>
        <h1><%= title %></h1>
        <main>
         <table>
@@ -40,7 +33,4 @@
         </table>
         <button onclick="location.href='./addBus'">Add New Business Contact</button>
        </main>
-     </div>
      <%- include('partials/footer') %>
-     </body>
-   </html>

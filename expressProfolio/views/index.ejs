@@ -4,14 +4,7 @@
       Date:   06/04/2023
       Filename: index.ejs
    -->
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <div id="allPage">
+    <%- include('partials/header') %>
     <%- include('partials/banner') %>
     <%- include('partials/navbar') %>
     <h1><%= title %></h1>
@@ -24,7 +17,4 @@
     <p>Witnessing the potential of technology in revolutionizing healthcare during my pharmacy career, I'm passionate about bridging the gap between these two domains.</p>
   </div>
     </main>
-  </div>
   <%- include('partials/footer') %>
-  </body>
-</html>

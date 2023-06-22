@@ -4,14 +4,7 @@
       Date:   06/04/2023
       Filename: about.ejs
    -->
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <div id="allPage">
+    <%- include('partials/header') %>
     <%- include('partials/banner') %>
     <%- include('partials/navbar') %>
     <h1><%= title %></h1>
@@ -28,7 +21,4 @@
       <button id="buttonResume"><a href="resume.pdf">Resume</a></button>
     </div>
     </main>
-  </div>
   <%- include('partials/footer') %>
-  </body>
-</html>
