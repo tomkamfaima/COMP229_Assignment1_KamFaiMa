@@ -79,7 +79,7 @@ router.post('/login', async(req, res, next) => {
     //use mongoose model.findOne to get user by email
     const user = await User.findOne({email:_email});
     if(!user){
-      res.render('login', { title: 'Login', inOut: checkInOut(req),logInMessage: 'User Not Found' });
+      res.render('login', { title: 'Login', inOut: checkInOut(req),logInMessage: 'Invaild User' });
     }else{
         //check password by bcrypt.compare as pw is hased
         bcrypt.compare(req.body.password, user.password, (err, data) => {
