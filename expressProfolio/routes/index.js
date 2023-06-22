@@ -133,7 +133,7 @@ router.get('/delete/:id', async(req,res)=>{
   res.redirect('/business_contact');
 });
 
-router.get('/update/:id', async(req,res,next)=>{
+router.get('/update/:id', async(req,res)=>{
   try{
   const user = await Business_contact.findOne({_id: req.params.id});
   res.render('update', { title: 'Update', user:user , inOut: _inOut});
