@@ -125,21 +125,6 @@ router.get("/logout", (req, res, next) => {
   }
 })
 
-/* GET Add Business Contact page. */
-router.get('/addBus', function(req, res, next) {
-    const token = req.cookies.jwt;
-    if(!token){
-      res.render('login', { title: 'Login', inOut: checkInOut(req), logInMessage:''});
-    }else{
-      jwt.verify(token, process.env.jwtSecret, (err,decodedToken) => {
-        if(err){
-          res.render('login', { title: 'Login', inOut: checkInOut(req), logInMessage:'' });
-        }else{
-          res.render('addBus', { title: 'Add New Business Contact', inOut: checkInOut(req)});
-        }
-      })
-    }
-});
 
 /* GET Register page. */
 router.get('/register', function(req, res, next) {
@@ -185,6 +170,22 @@ router.get('/business_contact', async(req,res,next)=>{
     res.status(500).json({message:err.message});
   }
 })
+
+/* GET Add Business Contact page. */
+router.get('/addBus', function(req, res, next) {
+  const token = req.cookies.jwt;
+  if(!token){
+    res.render('login', { title: 'Login', inOut: checkInOut(req), logInMessage:''});
+  }else{
+    jwt.verify(token, process.env.jwtSecret, (err,decodedToken) => {
+      if(err){
+        res.render('login', { title: 'Login', inOut: checkInOut(req), logInMessage:'' });
+      }else{
+        res.render('addBus', { title: 'Add New Business Contact', inOut: checkInOut(req)});
+      }
+    })
+  }
+});
 
 /* POST Add Business Contact page. */
 router.post('/addBus', async(req, res, next) => {
